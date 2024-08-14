@@ -64,15 +64,16 @@ function init () {
 
     // Отображаем таски из localStorage, если есть
     const tasksStorage = localStorage.getItem('tasks');
-    console.log(tasksStorage);
     if (tasksStorage != "") {
         const tasksArr = JSON.parse(tasksStorage)
-        if (tasksArr.length > 0) {
-            tasksArr.forEach(task => { 
-                tasks.set(task.key, task)
-                addTask(task.text, task.status, true, task.key );
-            });
-        };
+        if (tasksArr !== null && tasksArr !== undefined) {
+            if (tasksArr.length > 0) {
+                tasksArr.forEach(task => { 
+                    tasks.set(task.key, task)
+                    addTask(task.text, task.status, true, task.key );
+                });
+            };
+        }
     } 
 
     const deleteTask = (e) => {
